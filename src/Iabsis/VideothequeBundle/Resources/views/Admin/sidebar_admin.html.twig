@@ -1,0 +1,8 @@
+{% block sidebar %}
+
+<ul id="menu-genres" class="nav nav-list">
+    <li class="nav-header">Administrer</li>
+    <li {% if section|default('') == "genre" %}class="active"{% endif %}><a href="{{ path('genre') }}">Genres</a></li>
+    <li {% if section|default('') == "film" %}class="active"{% endif %}><a href="{{ path('film') }}">Films</a></li>
+</ul>    
+{% endblock %}

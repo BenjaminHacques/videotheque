@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% use 'IabsisVideothequeBundle:Admin:sidebar_admin.html.twig' %}
+
+{% block body -%}
+
+    <div class="row">
+        <div class="span12">
+            <h1>Liste des genres</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <table class="table table-bordered table-hover records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Label</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('genre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.label }}</td>
+                        <td>
+                            <a class="btn btn-medium btn-info" href="{{ path('genre_show', { 'id': entity.id }) }}"><i class="fa fa-eye-open"></i> show</a>
+                            <a class="btn btn-medium btn-default" href="{{ path('genre_edit', { 'id': entity.id }) }}"><i class="fa fa-edit"></i> edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+
+            <a class="btn btn-success" href="{{ path('genre_new') }}">
+                <i class="fa fa-plus"></i> Créer un nouveau genre
+            </a>
+        </div>
+    </div>
+    {% endblock %}

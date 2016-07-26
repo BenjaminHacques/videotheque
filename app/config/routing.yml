@@ -1,0 +1,30 @@
+_security:
+    resource: "@IabsisVideothequeBundle/Controller/SecurityController.php"
+    type:     annotation
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+_security_login_check:
+    pattern: /login_check
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+_security_logout:
+    pattern: /logout
+
+iabsis_videotheque:
+    resource: "@IabsisVideothequeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+iabsis_videotheque_admin:
+    path: /admin
+    defaults: { _controller: IabsisVideothequeBundle:Admin:index}
+
+_admin_genre:
+    resource: "@IabsisVideothequeBundle/Controller/GenreController.php"
+    type:     annotation
+    prefix:   /admin
+
+_admin_film:
+    resource: "@IabsisVideothequeBundle/Controller/FilmController.php"
+    type:     annotation
+    prefix:   /admin

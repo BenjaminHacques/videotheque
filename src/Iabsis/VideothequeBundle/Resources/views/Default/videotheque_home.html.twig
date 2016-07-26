@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% use 'IabsisVideothequeBundle:Default:sidebar_genres.html.twig' %}
+
+{% block body %}
+    {% for film in films %}
+        <div class="block">
+            <h2>{{ film.titre }}</h2>
+            <div class="tags-list">{% for Genre in film.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="badge">{{ Genre.label }}</span>{% endfor %}</div>
+            <div class="illustration">
+                {% if film.illustration is defined %}
+                    <img src="{{ film.illustration }}" />
+                {% else %}
+                    <span class="fa fa-ban"></span>
+                {% endif %}
+            </div>
+            <div class="description">
+                {{ film.description }}
+            </div>
+            <div class="read-more">
+                <a class="btn btn-primary btn-small" href="#">Voir</a>
+            </div>
+        </div>
+    {% else %}<div class="alert">Désolé, il n'y a aucun film dans cette section</div>
+    {% endfor %}
+{% endblock %}

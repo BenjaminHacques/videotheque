@@ -1,0 +1,30 @@
+security:
+    encoders:
+        Iabsis\VideothequeBundle\Entity\User:
+          algorithm: sha512
+          encode-as-base64: true
+          iterations: 10
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+
+    providers:
+        main:
+          entity: { class: IabsisVideothequeBundle:User, property: login }
+
+    firewalls:           
+
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+            logout:
+                path:   _security_logout
+                target: _index
+               
+
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
